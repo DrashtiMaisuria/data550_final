@@ -1,0 +1,28 @@
+---
+title: data550_final
+author: Drashti Maisuria
+output: github_document
+---
+
+# Brief description of the contents of the report
+This data set is a comprehensive record of the Summer Olympic Games from 1896
+to 2024. It shows information about athletes, their performances, and the medals that
+were awarded. There is a table where the variable “name of athlete” is removed 
+so there is only the player id identifying them. There is also a figure that 
+shows the trend of how many males and females medaled throughout the years of 
+2000-2024. This can provide insight on the number of male and female winners 
+for coming years. This report also shows which country had the most athletes 
+received a gold medal.
+
+# How to generate the final report
+Requirements
+R: Required for running the analysis scripts.
+Make: For automating the report generation.
+R Packages: Ensure the required R packages are installed
+
+# Where the code for creating the table is
+/Users/drashti/desktop/data550_final
+
+# Where the code for creating the figure is
+/Users/drashti/desktop/data550_final
+
