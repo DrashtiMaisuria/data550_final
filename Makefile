@@ -10,5 +10,5 @@ analysis: code/02_analysis.Rmd
 Render: code/03_render.Rmd 
 	Rscript code/03_render.Rmd
 	
-	
-	
+Renv install:
+    Rscript -e "renv::restore()"

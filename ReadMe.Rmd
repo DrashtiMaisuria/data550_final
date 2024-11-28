@@ -46,4 +46,9 @@ The Makefile, Rmarkdown (`final.Rmd`), and HTML report will be in the root
 directory of the project. The Rmarkdown will contain the tables and figures 
 produced in the analysis.
 
+data550_final uses `renv` to manage package environment. Run the following command:
 
+Install the required R packages:
+   If you have `make` installed, simply run:
+   ```bash
+   make install
