@@ -1,0 +1,26 @@
+---
+title: "final.Rmd"
+author: "Drashti Maisuria"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+```{r table_one}
+# Load necessary libraries
+library(dplyr)
+
+# Load the table_one object
+table_one <- read_csv("output/gender_count.csv")
+
+# Display table
+gender_count
+```
+
+```{r}
+# Load necessary library
+library(ggplot2)
+
+# Display the figure
+knitr::include_graphics("output/medals_by_gender.png")
+```

@@ -20,9 +20,30 @@ R: Required for running the analysis scripts.
 Make: For automating the report generation.
 R Packages: Ensure the required R packages are installed
 
-# Where the code for creating the table is
-/Users/drashti/desktop/data550_final
+# Code Structure
+'00_table.Rmd'
+This code will manipulate the data and remove Event. And then it will generate a 
+table showing the total number of male and female athletes.The table should be 
+saved in the output folder as a csv.
 
-# Where the code for creating the figure is
-/Users/drashti/desktop/data550_final
+'01_figure.Rmd'
+This code will generate a figure that shows the trend of how many males and 
+females metaled throughout the years of 2000-2024. The figure should be saved in 
+the output folder as a PNG. 
+
+'02_analysis.Rmd'
+This code will tell you what country had the most gold medals. 
+
+'03_render.Rmd'
+This code will render the report. 
+
+'final.Rmd' 
+This will generate just the table and figure required. 
+
+-------------------------------------------------------------------------------
+
+The Makefile, Rmarkdown (`final.Rmd`), and HTML report will be in the root 
+directory of the project. The Rmarkdown will contain the tables and figures 
+produced in the analysis.
+
 

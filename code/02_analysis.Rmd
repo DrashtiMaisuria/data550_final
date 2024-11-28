@@ -1,0 +1,28 @@
+---
+title: "02_analysis.Rmd"
+author: "Drashti Maisuria"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+Analysis to see which country had the most gold medals 
+```{r}
+library(tidyverse)
+here::i_am("code/02_analysis.Rmd")
+data_path <- here::here("data/olympics_dataset.csv")
+data <- read.csv(data_path)
+
+gold_medals <- data %>%
+  filter(Medal == "Gold")
+
+gold_medals_by_country <- gold_medals %>%
+  group_by(NOC) %>%
+  summarise(Gold_Medalists = n(), .groups = 'drop')  
+
+top_country <- gold_medals_by_country %>%
+  arrange(desc(Gold_Medalists)) %>%
+  slice(1)  
+
+print(top_country)
+```
+

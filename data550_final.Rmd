@@ -1,0 +1,86 @@
+---
+title: "data550_final"
+author: "Drashti Maisuria"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+here::i_am("data/olympics_dataset.csv")
+data_path <- here::here("data/olympics_dataset.csv")
+data <- read.csv(data_path)
+```
+
+Removing the column name of Event and making a table to show the total number of women vs men athletes 
+```{r}
+install.packages("dplyr")
+install.packages("kable")
+library(knitr)
+library(dplyr)
+data_clean <- data %>% select(-Event)
+head(data)
+
+gender_count <- data %>%
+  group_by(Sex) %>% 
+  summarise(Total_Count = n())  
+kable(gender_count)
+
+output <- here::here("output")
+write.csv(gender_count, file = paste0(output, "/gender_count.csv"), row.names = FALSE)
+```
+
+Figure showing the trends of males and females medaling over the years 2000-2024
+```{r}
+library(tidyverse)
+here::i_am("code/01_figure.Rmd")
+data_path <- here::here("data/olympics_dataset.csv")
+data <- read.csv(data_path)
+filtered_data <- data %>%
+  filter(Year >= 2000 & Year <= 2024)
+
+medals_by_gender <- filtered_data %>%
+  group_by(Year, Sex) %>%
+  summarise(Medalists = n(), .groups = 'drop')
+
+ggplot(medals_by_gender, aes(x = Year, y = Medalists, color = Sex)) +
+  geom_line(size = 1) +  # Line plot
+  geom_point(size = 3) +  # Points for each year
+  labs(title = "Trends of Male and Female Medalists (2000-2024)", 
+       x = "Year", 
+       y = "Number of Medalists") +
+  scale_color_manual(values = c("pink", "lightblue")) +  
+  theme_minimal() +  
+  theme(legend.title = element_blank())  
+output <- here::here("output")
+ggsave(paste0(output, "/medals_by_gender.png"),
+  plot = last_plot())
+```
+
+Analysis to see which country had the most gold medals 
+```{r}
+library(tidyverse)
+here::i_am("code/02_analysis.Rmd")
+data_path <- here::here("data/olympics_dataset.csv")
+data <- read.csv(data_path)
+
+gold_medals <- data %>%
+  filter(Medal == "Gold")
+
+gold_medals_by_country <- gold_medals %>%
+  group_by(NOC) %>%
+  summarise(Gold_Medalists = n(), .groups = 'drop')  
+
+top_country <- gold_medals_by_country %>%
+  arrange(desc(Gold_Medalists)) %>%
+  slice(1)  
+
+print(top_country)
+```
+
+
+
+
+
+
+
