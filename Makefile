@@ -17,20 +17,21 @@ output/top_country.csv: code/02_analysis.Rmd data/olympics_dataset.csv
 install:
 	Rscript -e "renv::restore()"
 	
-generate_report: 
+generate_report: build_image
 	# Ensure the report directory exists
 	mkdir -p report
 	
-	# Determine the platform for mounting paths (Mac/Linux vs. Windows)
+	# Platform-specific paths handling (Windows vs Mac/Linux)
 	ifeq ($(OS),Windows_NT)
-		# On Windows, use the correct path format for Git Bash
-		docker run -v //$(PWD)/report:/app/report drashtimaisuria/data550_final:final
+		# On Windows (Git Bash), Docker expects paths to start with `//`
+		# We use `$(shell pwd)` to get the absolute path (Git Bash may need this for mounting)
+		docker run -v //$(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
 	else
 		# On Mac/Linux, use regular path format
-		docker run -v $(PWD)/report:/app/report drashtimaisuria/data550_final:final
+		docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
 	endif
 
-# Target to build the Docker image 
+# Target to build the Docker image (useful if the image is not available locally)
 build_image:
 	docker build -t drashtimaisuria/data550_final:final .
 	
