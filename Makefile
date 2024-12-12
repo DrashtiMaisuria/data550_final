@@ -21,15 +21,13 @@ generate_report: build_image
 	# Ensure the report directory exists
 	mkdir -p report
 	
-	# Platform-specific paths handling (Windows vs Mac/Linux)
-	ifeq ($(OS),Windows_NT)
-		# On Windows (Git Bash), Docker expects paths to start with `//`
-		# We use `$(shell pwd)` to get the absolute path (Git Bash may need this for mounting)
-		docker run -v //$(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
-	else
-		# On Mac/Linux, use regular path format
-		docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
-	endif
+	# Run the Docker container and mount the `report` directory
+	docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
+
+# Target to build the Docker image (useful if the image is not available locally)
+build_image:
+	docker build -t drashtimaisuria/data550_final:final .
+
 
 # Target to build the Docker image (useful if the image is not available locally)
 build_image:
