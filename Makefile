@@ -14,20 +14,15 @@ output/top_country.csv: code/02_analysis.Rmd data/olympics_dataset.csv
 	Rscript -e "rmarkdown::render('code/02_analysis.Rmd')"
 	
 #.PHONY: install 	
-#install:
-	#Rscript -e "renv::restore()"
+install:
+	Rscript -e "renv::restore()"
 	
 generate_report: build_image
 	# Ensure the report directory exists
 	mkdir -p report
 	
-# Run the Docker container and mount the `report` directory
-docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
-
-# Target to build the Docker image (useful if the image is not available locally)
-build_image:
-	docker build -t drashtimaisuria/data550_final:final .
-	
+	# Run the Docker container and mount the `report` directory
+	docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
 
 # Target to build the Docker image (useful if the image is not available locally)
 build_image:
