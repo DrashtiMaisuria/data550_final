@@ -24,5 +24,8 @@ top_country <- gold_medals_by_country %>%
   slice(1)  
 
 print(top_country)
+
+output <- here::here("output")
+write.csv(top_country, file = paste0(output, "/top_country.csv"), row.names = FALSE)
 ```
 

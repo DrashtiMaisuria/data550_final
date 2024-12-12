@@ -9,12 +9,13 @@ output: html_document
 ```{r table_one}
 # Load necessary libraries
 library(dplyr)
+library(readr)
 
 # Load the table_one object
 table_one <- read_csv("output/gender_count.csv")
 
 # Display table
-gender_count
+table_one
 ```
 
 ```{r}
@@ -23,4 +24,12 @@ library(ggplot2)
 
 # Display the figure
 knitr::include_graphics("output/medals_by_gender.png")
+```
+
+```{r}
+# Load the analysis
+library(dplyr)
+library(readr)
+analysis <- read_csv("output/top_country.csv", show_col_types = FALSE)
+analysis
 ```

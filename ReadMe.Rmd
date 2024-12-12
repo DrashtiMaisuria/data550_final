@@ -34,11 +34,8 @@ the output folder as a PNG.
 '02_analysis.Rmd'
 This code will tell you what country had the most gold medals. 
 
-'03_render.Rmd'
-This code will render the report. 
-
 'final.Rmd' 
-This will generate just the table and figure required. 
+This will generate the report. 
 
 -------------------------------------------------------------------------------
 
@@ -52,3 +49,17 @@ Install the required R packages:
    If you have `make` installed, simply run:
    ```bash
    make install
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+

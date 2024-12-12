@@ -14,8 +14,8 @@ data <- read.csv(data_path)
 
 Removing the column Event name and making a table to show the number of men and women athletes
 ```{r}
-install.packages("dplyr")
-install.packages("kable")
+#install.packages("dplyr")
+#install.packages("kable")
 library(knitr)
 library(dplyr)
 data_clean <- data %>% select(-Event)
