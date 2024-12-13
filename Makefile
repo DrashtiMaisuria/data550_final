@@ -20,7 +20,6 @@ install:
 generate_report: 
 	# Ensure the report directory exists
 	mkdir -p report && \
-	
 	# Run the Docker container and mount the `report` directory
 	docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
 

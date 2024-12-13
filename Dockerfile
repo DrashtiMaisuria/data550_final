@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 RUN R -e "install.packages(c('ggplot2', 'dplyr', 'knitr', 'rmarkdown', 'readr', 'tidyr'))"
 
 # Command to run the RMarkdown report
-CMD ["Rscript", "-e", "rmarkdown::render('final.Rmd', output_format = 'html_document')"]
+CMD ["Rscript", "-e", "rmarkdown::render('final.Rmd', output_format = 'html_document', output_file = '/app/report/final.html')"]
 
 
 

@@ -66,6 +66,13 @@ Pull the image
 Run the image
 'docker run -v $(pwd):/app drashtimaisuria/final_image:final'
 
+#Instructions to create the report 
+
+```bash
+
+'docker build -t drashtimaisuria/data550_final:final .'
+'docker run --rm -v $(pwd)/report:/app/report drashtimaisuria/data550_final:final'
+
 
 
 
