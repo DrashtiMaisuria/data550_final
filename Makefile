@@ -21,9 +21,9 @@ generate_report:
 	# Ensure the report directory exists
 	mkdir -p report && \
 	# Run the Docker container and mount the `report` directory
-	docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
+	docker run --rm -v $(pwd)/report:/app/report drashtimaisuria/data550_final:final
 
-# Target to build the Docker image (useful if the image is not available locally)
+# Target to build the Docker image 
 build_image:
 	docker build -t drashtimaisuria/data550_final:final .
 	
