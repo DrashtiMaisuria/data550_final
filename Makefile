@@ -22,7 +22,7 @@ generate_report:
 	mkdir -p report && \
 	# Run the Docker container and mount the `report` directory
 	docker run --rm -v $(pwd)/report:/app/report drashtimaisuria/data550_final:final
-
+	
 # Target to build the Docker image 
 build_image:
 	docker build -t drashtimaisuria/data550_final:final .
