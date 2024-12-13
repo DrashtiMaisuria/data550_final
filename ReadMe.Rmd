@@ -50,8 +50,21 @@ Install the required R packages:
    ```bash
    make install
    
-   
+#Docker Image
 
+#Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/drashtimaisuria/data550_final.git
+   cd data550_final
+
+```bash
+
+Build the docker image 
+'docker build -t drashtimaisuria/data550_final:final .'
+Pull the image
+'docker pull drashtimaisuria/final_image:final'
+Run the image
+'docker run -v $(pwd):/app drashtimaisuria/final_image:final'
 
 
 
