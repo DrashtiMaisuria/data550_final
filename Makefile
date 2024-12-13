@@ -17,9 +17,9 @@ output/top_country.csv: code/02_analysis.Rmd data/olympics_dataset.csv
 install:
 	Rscript -e "renv::restore()"
 	
-generate_report: build_image
+generate_report: 
 	# Ensure the report directory exists
-	mkdir -p report
+	mkdir -p report && \
 	
 	# Run the Docker container and mount the `report` directory
 	docker run -v $(shell pwd)/report:/app/report drashtimaisuria/data550_final:final
